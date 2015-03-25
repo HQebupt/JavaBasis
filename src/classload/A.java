@@ -7,11 +7,11 @@ public class A {
 	public int a = 10;
 
 	static {
-		// System.out.println("¸¸Àà¾²Ì¬Óò³õÊ¼»¯.");
+		// System.out.println("çˆ¶ç±»é™æ€åŸŸåˆå§‹åŒ–.");
 	}
 
 	public A() {
-		System.out.println("¸¸Àà¹¹Ôìº¯ÊıÆô¶¯");
+		System.out.println("çˆ¶ç±»æ„é€ å‡½æ•°å¯åŠ¨");
 		// System.out.println(a);
 		this.print();
 	}
@@ -31,11 +31,11 @@ public class A {
 		public int a = 10;
 
 		static {
-			System.out.println("×ÓÀà¾²Ì¬Óò³õÊ¼»¯");
+			System.out.println("å­ç±»é™æ€åŸŸåˆå§‹åŒ–");
 		}
 
 		C() {
-			System.out.println("×ÓÀà¹¹Ôìº¯ÊıÆô¶¯");
+			System.out.println("å­ç±»æ„é€ å‡½æ•°å¯åŠ¨");
 			print();
 		}
 

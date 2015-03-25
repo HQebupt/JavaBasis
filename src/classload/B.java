@@ -8,15 +8,15 @@ public class B extends A {
 	public int b = 20;
 	// public int a = 10;
 	{
-		System.out.println("bÖĞµÄÆÕÍ¨¿é");
+		System.out.println("bä¸­çš„æ™®é€šå—");
 	}
 
 	static {
-		// System.out.println("×ÓÀà¾²Ì¬Óò³õÊ¼»¯");
+		// System.out.println("å­ç±»é™æ€åŸŸåˆå§‹åŒ–");
 	}
 
 	B() {
-		// System.out.println("×ÓÀà¹¹Ôìº¯ÊıÆô¶¯");
+		// System.out.println("å­ç±»æ„é€ å‡½æ•°å¯åŠ¨");
 		print();
 	}
 
@@ -27,12 +27,12 @@ public class B extends A {
 
 	public void what() {
 		this.printf();
-		super.printf();// »á²»»áµ÷ÓÃ´í³É×ÓÀàµÄº¯Êı
+		super.printf();// ä¼šä¸ä¼šè°ƒç”¨é”™æˆå­ç±»çš„å‡½æ•°
 	}
 
 	@Override
 	public void printf() {
-		System.out.println("ÎÒÊÇ×ÓÀàµÄprintfº¯Êı£¬²»ºÃÒâË¼Äãµ÷ÓÃ´íÁË");
+		System.out.println("æˆ‘æ˜¯å­ç±»çš„printfå‡½æ•°ï¼Œä¸å¥½æ„æ€ä½ è°ƒç”¨é”™äº†");
 	}
 
 	public static void main(String[] args) {

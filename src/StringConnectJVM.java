@@ -1,7 +1,7 @@
 public class StringConnectJVM {
 
 	/**
-	 * JavaÐéÄâ»ú¶Ô×Ö·û´®µÄÓÅ»¯
+	 * Javaè™šæ‹Ÿæœºå¯¹å­—ç¬¦ä¸²çš„ä¼˜åŒ–
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class StringConnectJVM {
 		System.out.println("s1 == s2:" + (s1 == s2));
 	}
 	/**
-	 * OutPut£º
+	 * OutPutï¼š
 	 * t1 == t2:true
 	 * s0 == s1:true
 	 * s0 == s2:false
