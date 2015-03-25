@@ -4,8 +4,7 @@ package org.hq.singleton;
  * @author HuangQiang
  * @date 2015-3-25
  * 
- *       单例模式的3种写法 用私有构造器或者枚举类型强化Singleton属性。
- *       单元素枚举类型方法是最佳的方法，可以应对序列化和反射等问题。
+ *       单例模式的3种写法 用私有构造器或者枚举类型强化Singleton属性。 单元素枚举类型方法是最佳的方法，可以应对序列化和反射等问题。
  */
 public class Elvis {
 
@@ -19,7 +18,7 @@ public class Elvis {
 
 	// 2.静态工厂方法
 	static class Singleton2 {
-		private static final Singleton2 INSTANCE = new Singleton2();;
+		private static final Singleton2 INSTANCE = new Singleton2();
 
 		private Singleton2() {
 		}
@@ -32,8 +31,23 @@ public class Elvis {
 	// 3.包含单个元素的枚举类型。最佳方法
 	public static enum Singleton3 {
 		INSTANCE;
+
 		public void leaveTheBuilding() {
 			System.out.println("so great.");
+		}
+	}
+
+	// 4.静态工厂方法 --延迟初始化
+	static class Singleton4 {
+		private Singleton4() {
+		}
+
+		public static Singleton4 getInstance() {
+			return SingletonInner.INSTANCE;
+		}
+
+		static class SingletonInner {
+			public static final Singleton4 INSTANCE = new Singleton4();;
 		}
 	}
 
@@ -42,5 +56,6 @@ public class Elvis {
 		Elvis.Singleton3 b = Elvis.Singleton3.INSTANCE;
 		a.leaveTheBuilding();
 		b.leaveTheBuilding();
+		Elvis.Singleton4 d = Elvis.Singleton4.getInstance();
 	}
 }
