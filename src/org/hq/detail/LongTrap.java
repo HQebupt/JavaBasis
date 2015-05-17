@@ -27,5 +27,13 @@ public class LongTrap {
 		final Long Y = -129L;
 		System.out.println(X + " == " + Y + " : " + (X == Y));
 	}
+	/**
+	 * OutPut:
+	 * 0 == 0 : true
+	 * 127 == 127 : true
+	 * 128 == 128 : false
+	 * -128 == -128 : true
+	 * -129 == -129 : false
+	 */
 
 }
