@@ -40,10 +40,10 @@ public static Long valueOf(long l) {
 
 ## [单例模式的4种实现](https://github.com/HQebupt/JavaBasis/blob/master/src/org/hq/singleton/Elvis.java)
 用私有构造器或者枚举类型强化Singleton属性。 单元素枚举类型方法是最佳的方法，可以应对序列化和反射等问题。
-1. public静态成员是个final域，构造函数都是`private`
-2. 静态工厂方法
-3. 包含单个元素的枚举类型。**最佳方法**
-4. 静态工厂方法 --延迟初始化: 使用内部类达到目的
+* 1.public静态成员是个final域，构造函数都是`private`
+* 2.静态工厂方法
+* 3.包含单个元素的枚举类型。**最佳方法**
+* 4.静态工厂方法 --延迟初始化: 使用内部类达到目的
 
 > 如果一个类实现了`Serialize`序列化接口，这个类的单例模式被破坏。修正的方法只有一个，反序列化的时候，添加`readResolve`方法。具体见<Effective Java> Rule77.
 
