@@ -53,16 +53,16 @@ Java细节编程的奇淫技巧，价值低，有兴趣就看看。
 类的初始化顺序：先父类，后子类，先字段，后方法。
 
 ## 演示JVM中堆、栈、方法区导致的内存溢出程序实例
-**[1堆实例**](https://github.com/HQebupt/JavaBasis/blob/master/src/jvm/HeapOOM.java)
-创建对象过多，导致OOM。首先设置VM参数：初始堆大小与最大堆大小都是20M，年轻代大小10M。然后，我们来看程序：程序中两个类HeapOOM、OOMObject；通过HeapOOM的main方法，在while死循环中，不断创建OOMObject对象，添加到数组队列list中。接下来，我们看一下运行效果：内存溢出错误，heap空间的问题。最后，我们来分析一下：由于对象实例是在堆中分配的，while循环不断生成新的对象，占用的堆空间越来越大，超过了最大堆20M的大小，最终导致OutOfMemoryError（内存溢出错误）。
+[**1堆实例**](https://github.com/HQebupt/JavaBasis/blob/master/src/jvm/HeapOOM.java)
+ 创建对象过多，导致OOM。首先设置VM参数：初始堆大小与最大堆大小都是20M，年轻代大小10M。然后，我们来看程序：程序中两个类HeapOOM、OOMObject；通过HeapOOM的main方法，在while死循环中，不断创建OOMObject对象，添加到数组队列list中。接下来，我们看一下运行效果：内存溢出错误，heap空间的问题。最后，我们来分析一下：由于对象实例是在堆中分配的，while循环不断生成新的对象，占用的堆空间越来越大，超过了最大堆20M的大小，最终导致OutOfMemoryError（内存溢出错误）。
 
-**[2栈实例**](https://github.com/HQebupt/JavaBasis/blob/master/src/jvm/JavaVMStackSOF.java)
-大量的本地变量，导致栈溢出错误。首先设置VM参数：线程栈大小128k。然后，我们看一下程序：一个类JavaVMStackSOF，一个成员变量stacklength，一个方法stackLeak（），里面自己递归调用自己，一个main()方法，main方法中创建一个对象，然后对象引用变量som调用stackLeak方法，抛出异常。接下来，看一下运行效果：StackOverflowError（栈溢出错误）。最后，我们来分析一下：main方法中创建的对象实例调用了stackLeak方法，而这个方法是自我递归调用的，会在栈中产生大量的stackLength本地变量，占用栈内存越来越大，超过了设置的128k大小，出现栈内存溢出错误。
+[**2栈实例**](https://github.com/HQebupt/JavaBasis/blob/master/src/jvm/JavaVMStackSOF.java)
+ 大量的本地变量，导致栈溢出错误。首先设置VM参数：线程栈大小128k。然后，我们看一下程序：一个类JavaVMStackSOF，一个成员变量stacklength，一个方法stackLeak（），里面自己递归调用自己，一个main()方法，main方法中创建一个对象，然后对象引用变量som调用stackLeak方法，抛出异常。接下来，看一下运行效果：StackOverflowError（栈溢出错误）。最后，我们来分析一下：main方法中创建的对象实例调用了stackLeak方法，而这个方法是自我递归调用的，会在栈中产生大量的stackLength本地变量，占用栈内存越来越大，超过了设置的128k大小，出现栈内存溢出错误。
 
 **[3栈实例**](https://github.com/HQebupt/JavaBasis/blob/master/src/jvm/JavaVMStackOOM.java)
-创建的线程过多，导致内存溢出。首先设置线程栈大小2M。然后，我们分析一下程序：一个类，3个方法，第2个方法在while循环中不断的创建线程，由于每一个线程启动后，调用dontStop方法，一直运行。Main方法中创建了一个对象实例，然后调用了第2个方法，导致不断创建线程。由于线程是在栈中分配的，这导致了程序占用的栈空间越来越大，最后超过了栈内存的限制，出现内存溢出错误。（这个程序演示会引起OS假死，就不演示了：假死是因为java的线程是映射到OS的内核线程的）
+ 创建的线程过多，导致内存溢出。首先设置线程栈大小2M。然后，我们分析一下程序：一个类，3个方法，第2个方法在while循环中不断的创建线程，由于每一个线程启动后，调用dontStop方法，一直运行。Main方法中创建了一个对象实例，然后调用了第2个方法，导致不断创建线程。由于线程是在栈中分配的，这导致了程序占用的栈空间越来越大，最后超过了栈内存的限制，出现内存溢出错误。（这个程序演示会引起OS假死，就不演示了：假死是因为java的线程是映射到OS的内核线程的）
 
 **[4方法区实例**](https://github.com/HQebupt/JavaBasis/blob/master/src/jvm/RuntimeConstantPoolOOM.java)
-常量池过多常量。首先设置初始方法区PermSize、最大方法区大小MaxPermSize都是10m。然后我们看一下程序，main方法中在常量池中添加内容，采用String.intern()可以将String对象包含的字符串添加到常量池中，在while循环中不断向常量池中添加内容，占用方法区空间越来越大，最后超过了10M，发生内存溢出错误。（ps：使用List保持着常量池引用，在integer范围内足够产生OOM了。）
+ 常量池过多常量。首先设置初始方法区PermSize、最大方法区大小MaxPermSize都是10m。然后我们看一下程序，main方法中在常量池中添加内容，采用String.intern()可以将String对象包含的字符串添加到常量池中，在while循环中不断向常量池中添加内容，占用方法区空间越来越大，最后超过了10M，发生内存溢出错误。（ps：使用List保持着常量池引用，在integer范围内足够产生OOM了。）
 
 
