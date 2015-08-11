@@ -2,6 +2,14 @@
 Java programming basis training. 
 
 
+## [IP地址转换为数值](https://github.com/HQebupt/JavaBasis/blob/master/src/org/hq/detail/IpToNum.java)
+公式：`D.C.B.A的int值 = A + B*2^8 + C*2^16 + D*2^24`
+但是java中没有无符号的int，所以数值必须用long来存储。
+
+扩展思考：如何存储海量的IP地址，进行方便的查找？
+
+
+
 ## [Long 包装类型](https://github.com/HQebupt/JavaBasis/blob/master/src/org/hq/detail/LongTrap.java)
 <Effective Java> 对于包装类型的建议： 包装类型遇到基本类型，一定会自动拆箱。若为 `null`，拆箱出来就是`NullPointerException`.
 
