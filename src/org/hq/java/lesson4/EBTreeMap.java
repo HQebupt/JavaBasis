@@ -1,4 +1,4 @@
-package org.hq.java.lession4;
+package org.hq.java.lesson4;
 
 import java.util.ArrayList;
 import java.util.Arrays;

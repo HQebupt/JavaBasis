@@ -1,4 +1,4 @@
-package org.hq.java.lession3;
+package org.hq.java.lesson3;
 
 import java.util.Random;
 
