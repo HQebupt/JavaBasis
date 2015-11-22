@@ -1,4 +1,4 @@
-package org.hq.detail;
+package org.hq.collections;
 
 import java.util.BitSet;
 
