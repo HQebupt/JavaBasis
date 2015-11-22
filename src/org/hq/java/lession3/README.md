@@ -1,6 +1,9 @@
+åŠ¨æ‰‹ç¼–ç¨‹å®ç°EBArrayï¼Œè¦æ±‚ï¼š
 
-¶¯ÊÖ±à³ÌÊµÏÖEBArray£¬ÒªÇó£º
 1.	extends AbstractCollection
-2.	abstractµÄ·½·¨ÊµÏÖ
+
+2.	abstractçš„æ–¹æ³•å®ç°
+
 3.	override add(),remove(),contains()
-4.	²Î¿¼AbstractCollection, ArrayList{×¢ÒâÊı¾İ´æ´¢ÔÚelementData}
+
+4.	å‚è€ƒAbstractCollection, ArrayList{æ³¨æ„æ•°æ®å­˜å‚¨åœ¨elementData}
